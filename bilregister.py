@@ -49,18 +49,37 @@ d_car = Car("Kia", "Silver", 1987)
 
 my_cars = [a_car, b_car, c_car, d_car]
 
-def menu(car_list):
+def car_menu(car_list):
     available_chocies = [1, 2, 3, 4]
     while True:
-        print("1. Model\n2. Färg\n3. Miltal")
-        choice = input("Vad vill du skirva ut: ")
+        print("1. Märke\n2. Färg\n3. Miltal\n4. Avsluta")
+        choice = input("Vad vill du skriva ut: ")
         if not choice.isnumeric:
             print("Otillåtet val")
             continue
-        else:
-            choice = int(choice)
+        choice = int(choice)
         
         if choice not in available_chocies:
             print("Otillåtet val")
-        
-        
+            continue
+
+        if choice == 1:
+            output_brand = []
+            for brand in car_list:
+                output_brand.append(brand.get_brand())
+            print(sorted(output_brand))
+        elif choice == 2:
+            output_color = []
+            for color in car_list:
+                output_color.append(color.get_color())
+            print(sorted(output_color))
+        elif choice == 3:
+            output_mileage = []
+            for mileage in car_list:
+                output_mileage.append(mileage.get_mileage())
+            print(sorted(output_mileage))
+        elif choice == 4:
+            break
+
+
+car_menu(my_cars)
